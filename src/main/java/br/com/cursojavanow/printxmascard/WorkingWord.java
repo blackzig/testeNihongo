@@ -21,13 +21,17 @@ public class WorkingWord {
             } else {
                 ch = sentence.charAt(lengthSentenceMinusOne);
             }
-            Character c = ToJapanese.hiragana(ch);
-            sentenceReturn = sentence.substring(0, lengthSentenceMinusOne)
-                    .concat(c.toString());
+
+            if (ch == 33) {//!
+                sentenceReturn = sentence;
+            } else {
+                Character c = ToJapanese.hiragana(ch);
+                sentenceReturn = sentence.substring(0, lengthSentenceMinusOne)
+                        .concat(c.toString());
+            }
         } catch (Exception e) {
             System.out.println("Letra não reconhecida");
         }
         return sentenceReturn;
     }
-
 }

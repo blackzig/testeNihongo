@@ -27,10 +27,32 @@ public class ToJapanese {
     public static Character hiragana(char c) {
         Character ch = null;
         try {
-            if (c == 65 || c == 97) {
-                ch = 12354;//あ
-            } else if (c == 73 || c == 105) {
-                ch = 12356;//い
+            switch (c) {
+                case 65:
+                case 97:
+                    ch = 12354;//あ
+                    break;
+                case 73:
+                case 105:
+                    ch = 12356;//い
+                    break;
+                case 85:
+                case 117:
+                    ch = 12358;//う
+                    break;
+                case 69:
+                case 101:
+                    ch = 12360;//え
+                    break;
+                case 79:
+                case 111:
+                    ch = 12362;//お
+                    break;
+                case 120:
+                    ch = 12387;//っ
+                    break;
+                default:
+                    break;
             }
         } catch (Exception e) {
             System.out.println("T");
