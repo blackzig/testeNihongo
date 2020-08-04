@@ -1,0 +1,22 @@
+Gerenciamento do bankroll 
+
+sit and go
+geralmente a cada 500 jogos temos 20 jogos sem ganhar nada
+
+torneios
+geralmente se perde 100 jogos sem ganhar nada.
+
+                head-up sit and go  sit and go  sit and go  torneios
+                        1 mesa      18 players  45 player
+Muito Agressivo 20      30          40          50          75
+Agressivo       30      50          60          75          100
+Normal          40      75          85          100         150
+Conservador     50      100         125         150         200
+Ultra           75      150         175         200         250 
+Conservador           
+
+Os números representam buy-in:
+Por exemplo, você tem 20 dólares e quer jogar 20 jogos de um dólar no head-up.
+Do outro lado extremo, você tem 20 dólares e quer jogar 75 jogos no head-up.
+Para isso pegue 20/75 = 0,26, então o torneio que você quer jogar deve custar 
+no máxio 0,26 centávos de dolar.

@@ -1,5 +1,7 @@
 package br.com.cursojavanow.printxmascard;
 
+import br.com.cursojavanow.printxmascard.nihongo.NewJFrame;
+
 public class PrintXmasCard {
 
     private static XmasCard umCartao;

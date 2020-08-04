@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.com.cursojavanow.printxmascard;
+package br.com.cursojavanow.printxmascard.nihongo;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.stage.Stage;
+import br.com.cursojavanow.printxmascard.CompareAnswerBRToJP;
+import br.com.cursojavanow.printxmascard.CompareAnswerJPToBR;
 
 /**
  *
@@ -15,11 +9,17 @@ import javafx.stage.Stage;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
+    String sentenceBackup;
+    int language = 2;
+
+    /*
+    1. traduzir do japonês
+    2. escrever em japonês
      */
     public NewJFrame() {
         initComponents();
+        // JTFAsk.setText("えっ!");
+        //JTFAsk.setText("eh!");
     }
 
     /**
@@ -31,7 +31,8 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JTFJapanese = new javax.swing.JTextField();
+        JTFAnswer = new javax.swing.JTextField();
+        JTFAsk = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,14 +42,17 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        JTFJapanese.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        JTFJapanese.addKeyListener(new java.awt.event.KeyAdapter() {
+        JTFAnswer.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        JTFAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                JTFJapaneseKeyReleased(evt);
+                JTFAnswerKeyReleased(evt);
             }
         });
 
-        jButton1.setText("jButton1");
+        JTFAsk.setEditable(false);
+        JTFAsk.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+
+        jButton1.setText("Próximo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -62,47 +66,87 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(JTFJapanese, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(JTFAsk)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(JTFAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 405, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(JTFJapanese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(JTFAsk, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(JTFAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jButton1)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTFJapaneseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFJapaneseKeyReleased
-        String setenceJapanese = JTFJapanese.getText();
-        String newSentenceJapanese = WorkingWord
-                .concatLastCharacter(setenceJapanese);
-        if (newSentenceJapanese != null) {
-            JTFJapanese.setText(newSentenceJapanese);
+    private void JTFAnswerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFAnswerKeyReleased
+        if (language == 1) {
+            japaneseToPortuguese(evt);
         } else {
-            JTFJapanese.setText(setenceJapanese
-                    .substring(0, setenceJapanese.length() - 1));
+            writingJapanese(evt);
         }
-    }//GEN-LAST:event_JTFJapaneseKeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            SwingJavaFX.ShowGUI();
-        } catch (Exception ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_JTFAnswerKeyReleased
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+//        Webservice webservice = new Webservice();
+//        JapaneseWord japaneseWord = webservice.teste(1, 1);
+//        JTFAsk.setText(japaneseWord.getWord());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void japaneseToPortuguese(java.awt.event.KeyEvent evt) {
+        switch (evt.getKeyCode()) {
+            case 8://backspace
+                backspace();
+                break;
+            default:
+                CompareAnswerJPToBR.japaneseToPortuguese(evt, JTFAsk, JTFAnswer);
+                break;
+        }
+    }
+
+    public void writingJapanese(java.awt.event.KeyEvent evt) {
+        System.out.println("press " + evt.getKeyCode());
+        String answer = null;
+        switch (evt.getKeyCode()) {
+            case 8://backspace
+                backspace();
+                break;
+            case 17: //alt
+            case 18: //alt 
+                System.out.println("não faça nada");
+                break;
+            case 78: //n 
+                answer = WorkingWord.checkTheLastThreeLetters(JTFAnswer
+                        .getText());
+                JTFAnswer.setText(answer);
+                break;
+            default:
+                //   sentenceBackup = JTFAnswer.getText();
+                answer = WorkingWord.checkTheLastTwoSyllables(JTFAnswer
+                        .getText());
+                JTFAnswer.setText(answer);
+        }
+    }
+
+    public void backspace() {
+        String setenceJapanese = JTFAnswer.getText();
+        JTFAnswer.setText(setenceJapanese);
+    }
 
     /**
      * @param args the command line arguments
@@ -138,7 +182,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTFJapanese;
+    private javax.swing.JTextField JTFAnswer;
+    private javax.swing.JTextField JTFAsk;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

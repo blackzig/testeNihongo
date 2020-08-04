@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cursojavanow.printxmascard;
+package br.com.cursojavanow.printxmascard.nihongo;
 
 /**
  *
@@ -22,9 +22,9 @@ Range: 2E80—2EFF Quantity of characters: 128
 
 
  */
-public class ToJapanese {
+public class Hiragana {
 
-    public static Character hiragana(char c) {
+    public static Character syllableForHiragana(char c) {
         Character ch = null;
         try {
             switch (c) {
