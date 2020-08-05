@@ -11,7 +11,7 @@ package br.com.cursojavanow.printxmascard.nihongo;
  */
 public class Alfabeto {
 
-    private static boolean charIsJapanese(final char c) {
+    private static boolean charIsJapanese(char c) {
         return (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HIRAGANA)
                 || (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.KATAKANA)
                 || (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS);

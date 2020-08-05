@@ -136,7 +136,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 JTFAnswer.setText(answer);
                 break;
             default:
-                //   sentenceBackup = JTFAnswer.getText();
                 answer = WorkingWord.checkTheLastTwoSyllables(JTFAnswer
                         .getText());
                 JTFAnswer.setText(answer);

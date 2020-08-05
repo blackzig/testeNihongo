@@ -28,23 +28,18 @@ public class Hiragana {
         Character ch = null;
         try {
             switch (c) {
-                case 65:
-                case 97:
+                case 97: //unicode a
                     ch = 12354;//あ
                     break;
-                case 73:
                 case 105:
                     ch = 12356;//い
                     break;
-                case 85:
                 case 117:
                     ch = 12358;//う
                     break;
-                case 69:
                 case 101:
                     ch = 12360;//え
                     break;
-                case 79:
                 case 111:
                     ch = 12362;//お
                     break;
@@ -55,9 +50,29 @@ public class Hiragana {
                     break;
             }
         } catch (Exception e) {
-            System.out.println("T");
+            System.out.println("H");
         }
         return ch;
+    }
+
+    public static Character verifySyllable(String sentence) {
+        Character ch = null;
+        switch (sentence) {
+            case "ka":
+                return ch = 12363;
+            case "su":
+                return ch = 12377;
+            case "x": //っ
+                return ch = 12387;
+            case "de":
+                return ch = 12391;
+            case "na":
+                return ch = 12394;
+            case "no":
+                return ch = 12398;
+            default:
+                return 32;//espaço
+        }
     }
 
 }
